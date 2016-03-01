@@ -1,0 +1,161 @@
+<!--
+  ~
+  ~ Copyright (c) Immotronic, 2012
+  ~
+  ~ Contributors:
+  ~
+  ~  	Lionel Balme (lbalme@immotronic.fr)
+  ~  	Kevin Planchet (kplanchet@immotronic.fr)
+  ~
+  ~ This file is part of ubikit-core, a component of the UBIKIT project.
+  ~
+  ~ This software is a computer program whose purpose is to host third-
+  ~ parties applications that make use of sensor and actuator networks.
+  ~
+  ~ This software is governed by the CeCILL-C license under French law and
+  ~ abiding by the rules of distribution of free software.  You can  use,
+  ~ modify and/ or redistribute the software under the terms of the CeCILL-C
+  ~ license as circulated by CEA, CNRS and INRIA at the following URL
+  ~ As a counterpart to the access to the source code and  rights to copy,
+  ~ "http://www.cecill.info".
+  ~
+  ~ As a counterpart to the access to the source code and  rights to copy,
+  ~ modify and redistribute granted by the license, users are provided only
+  ~ with a limited warranty  and the software's author,  the holder of the
+  ~ economic rights,  and the successive licensors  have only  limited
+  ~ liability.
+  ~
+  ~ In this respect, the user's attention is drawn to the risks associated
+  ~ with loading,  using,  modifying and/or developing or reproducing the
+  ~ software by the user in light of its specific status of free software,
+  ~ that may mean  that it is complicated to manipulate,  and  that  also
+  ~ therefore means  that it is reserved for developers  and  experienced
+  ~ professionals having in-depth computer knowledge. Users are therefore
+  ~ encouraged to load and test the software's suitability as regards their
+  ~ requirements in conditions enabling the security of their systems and/or
+  ~ data to be ensured and,  more generally, to use and operate it in the
+  ~ same conditions as regards security.
+  ~
+  ~ The fact that you are presently reading this means that you have had
+  ~ knowledge of the CeCILL-C license and that you accept its terms.
+  ~
+  ~ CeCILL-C licence is fully compliant with the GNU Lesser GPL v2 and v3.
+  ~
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>ubikit-core</artifactId>
+  <version>2.0.0-SNAPSHOT</version>
+  <packaging>bundle</packaging>
+  <name>Ubikit Core library</name>
+  <inceptionYear>2012</inceptionYear>
+  <url>http://www.immotronic.fr</url>
+  <description>Core library of the Ubikit project</description>
+  <licenses>
+    <license>
+      <name>CeCILL-C</name>
+      <url>http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html</url>
+      <distribution>repo</distribution>
+      <comments>
+      This software is governed by the CeCILL-C license under French law and
+      abiding by the rules of distribution of free software.  You can  use,
+      modify and/ or redistribute the software under the terms of the CeCILL-C
+      license as circulated by CEA, CNRS and INRIA at the following URL
+      As a counterpart to the access to the source code and  rights to copy,
+      "http://www.cecill.info".
+
+      As a counterpart to the access to the source code and  rights to copy,
+      modify and redistribute granted by the license, users are provided only
+      with a limited warranty  and the software's author,  the holder of the
+      economic rights,  and the successive licensors  have only  limited
+      liability.
+
+      In this respect, the user's attention is drawn to the risks associated
+      with loading,  using,  modifying and/or developing or reproducing the
+      software by the user in light of its specific status of free software,
+      that may mean  that it is complicated to manipulate,  and  that  also
+      therefore means  that it is reserved for developers  and  experienced
+      professionals having in-depth computer knowledge. Users are therefore
+      encouraged to load and test the software's suitability as regards their
+      requirements in conditions enabling the security of their systems and/or
+      data to be ensured and,  more generally, to use and operate it in the
+      same conditions as regards security.
+
+      The fact that you are presently reading this means that you have had
+      knowledge of the CeCILL-C license and that you accept its terms.
+
+      CeCILL-C licence is fully compliant with the GNU Lesser GPL v2 and v3.
+      </comments>
+    </license>
+  </licenses>
+
+  <parent>
+    <groupId>org.ubikit</groupId>
+    <artifactId>ubikit-project-pom</artifactId>
+    <version>1.0</version>
+    <relativePath>../ubikit-project-pom.xml</relativePath>
+  </parent>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.2.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>2.3.1</version>
+      <optional>true</optional> <!-- Prevent this artifact to be part of distribution assembly -->
+    </dependency>
+
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json-bundle</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <version>5.0.0</version>
+    </dependency>
+
+  </dependencies>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <instructions>
+            <Bundle-Activator>org.ubikit.impl.Activator</Bundle-Activator>
+            <Embed-Dependency>hsqldb</Embed-Dependency>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <connection>scm:git:https://github.com/Immotronic/ubikit-core</connection>
+    <developerConnection>scm:git:https://github.com/Immotronic/ubikit-core</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/Immotronic/ubikit-core</url>
+  </scm>
+
+</project>
